@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {fetchContacts, addContact, deleteContact} from './operations'
+import { fetchContacts, addContact, deleteContact } from './operations'
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 
 const contactsInitialState = {
@@ -45,11 +47,18 @@ const contactSlice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => handleRejected(state, action))
 });
 
-export const contactReducer = contactSlice.reducer
+const persistConfig = {
+  key: 'token',
+  storage,
+  whitelist: ['token']
+};
+
+export const contactReducer = persistReducer(persistConfig, contactSlice.reducer);
+
 
 // // Selectors
-export const selectContacts = state => state.contacts.items;
-export const selectIsLoading = state => state.contacts.isLoading;
-export const selectError = state => state.contacts.error;
+// export const selectContacts = state => state.contacts.items;
+// export const selectIsLoading = state => state.contacts.isLoading;
+// export const selectError = state => state.contacts.error;
 
 
