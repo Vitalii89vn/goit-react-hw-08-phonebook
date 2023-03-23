@@ -1,6 +1,6 @@
-import { useDispatch } from "react-redux";
-import { lazy, Suspense, useEffect } from "react";
-import { fetchContacts } from "redux/contacts/operations";
+// import { useDispatch } from "react-redux";
+// import { lazy, Suspense, useEffect } from "react";
+// import { fetchContacts } from "redux/contacts/operations";
 import { Layout } from "./Layout/Layout";
 import RegisterPage from '../pages/RegisterPage';
 import HomePage from "../pages/HomePage";
