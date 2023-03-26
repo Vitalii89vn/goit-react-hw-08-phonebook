@@ -15,14 +15,14 @@ export const ContactForm = () => {
         e.preventDefault();
         const form = e.target;
         const name = form.elements.name.value;
-        const phone = form.elements.phone.value;
+        // const number = form.elements.phone.value;
         contacts.find(item => item.name.toLowerCase() === name.toLowerCase())
             ?
             Notiflix.Notify.failure(`${name} is already in contacts`)
             :
             dispatch(addContact({
-                name,
-                phone,
+                name: form.elements.name.value,
+                number: form.elements.number.value
             }
             ));
       
@@ -46,7 +46,7 @@ export const ContactForm = () => {
             <input
                 type="tel"
                 id={numberId}
-                name="phone"
+                name="number"
                 pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                 required

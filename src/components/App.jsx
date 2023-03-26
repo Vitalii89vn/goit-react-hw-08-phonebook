@@ -1,53 +1,39 @@
-// import { useDispatch } from "react-redux";
-// import { lazy, Suspense, useEffect } from "react";
-// import { fetchContacts } from "redux/contacts/operations";
+import { useDispatch } from "react-redux";
+import { lazy, useEffect } from "react";
+import { refreshUser } from "redux/auth/operations";
 import { Layout } from "./Layout/Layout";
-import RegisterPage from '../pages/RegisterPage';
-import HomePage from "../pages/HomePage";
-import ContactsPage from "../pages/ContactsPage";
-// import { Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { PrivateRoute } from "routes/PrivateRoute";
+import { RestrictedRoute } from "routes/RestrictedRoute";
+import { useAuth } from "hooks";
+import { fetchContacts } from "redux/contacts/operations";
 
-// const HomePage = lazy(() => import('../pages/HomePage'));
-// const ContactsPage = lazy(() => import('../pages/ContactsPage'));
-// const RegisterPage = lazy(()=> import('../pages/RegisterPage'))
+const HomePage = lazy(() => import('../pages/HomePage'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
+const LoginPage = lazy(()=> import('../pages/LoginPage'))
 
 export const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
-    <div>
-      {/* <Suspense fallback={null}> */}
-        <Layout />
-        <RegisterPage/>
-        <HomePage />
-        <ContactsPage/>
-      {/* </Suspense> */}
-    </div>
+    isRefreshing ?
+      (<b>Refreshing user...</b>) :
+      (
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="/register" element={<RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />} />
+            <Route path="/login" element={<RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />} />
+            <Route path="/contacts" element={<PrivateRoute redirectTo="/login" component={<ContactsPage />} />} />
+          </Route>
+        </Routes>
+      )
   )
 };
-
-// eslint-disable-next-line no-lone-blocks
-{/* <Routes>
-  <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/register" element={<RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
-          }
-        />
-        <Route
-          path="/tasks"
-          element={
-            <PrivateRoute redirectTo="/login" component={<TasksPage />} />
-          }
-        />
-      </Route>
-</Routes> */}

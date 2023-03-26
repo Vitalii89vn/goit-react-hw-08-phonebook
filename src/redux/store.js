@@ -1,8 +1,8 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { contactReducer } from './contacts/contactsSlice';
 import { filterReducer } from "./filter/filterSlice";
-import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import { authReducer } from "./auth/authSlice";
+import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 
 const rootReducer = combineReducers({
   contacts: contactReducer,
@@ -20,4 +20,4 @@ export const store = configureStore({
     })
 });
 
-export const persistor = persistStore(store)
+export const persistor = persistStore(store);
