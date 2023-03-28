@@ -1,0 +1,11 @@
+.contact{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contact_info{
+    min-width: 70%;
+    display: flex;
+    justify-content: space-between;
+}

@@ -14,8 +14,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-button{
-  margin-left: 30px;
-  margin-top: 10px;
 
+ul{
+  padding-inline-start: 0;
+}
+li{
+  list-style-type: none;
+  /* color: #d2f1d7 */
 }
