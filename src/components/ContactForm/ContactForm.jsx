@@ -4,7 +4,7 @@ import Notiflix from 'notiflix';
 import { useDispatch, useSelector } from "react-redux";
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
-
+import { SubmitButton } from 'components/Button/SubmitButton';
 
 export const ContactForm = () => {
     const dispatch = useDispatch();
@@ -53,7 +53,7 @@ export const ContactForm = () => {
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     required
                 />
-                <button type="submit" className={css.btn}>Add contact</button>
+                <SubmitButton>Add contact</SubmitButton>
             </form>
         </div>
     )

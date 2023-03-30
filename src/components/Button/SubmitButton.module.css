@@ -1,0 +1,15 @@
+.customButton{
+    border: 2px solid rgb(5, 5, 5);
+    border-radius: 3px;
+    box-shadow: 0 0 2px green;
+    color: #d9ebe5;
+    background-color: #05299e;
+    outline: none;
+    max-width: 100px;
+    
+};
+.customButton:hover, 
+.customButton:focus {
+    color:#b9cc0f;
+    background-color: #130242;
+};
