@@ -19,9 +19,10 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(refreshUser());
-    dispatch(fetchContacts());
   }, [dispatch]);
-
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
   return (
     isRefreshing ?
       (<b>...</b>) :

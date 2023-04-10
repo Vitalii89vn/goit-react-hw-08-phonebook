@@ -1,9 +1,13 @@
 .form {
-    width: 320px;
+    max-width: 200px;
+    margin: 40px auto;
 }
 
 .label {
     display: flex;
     flex-direction: column;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+}
+.input{
+    margin-top: 4px;
 }

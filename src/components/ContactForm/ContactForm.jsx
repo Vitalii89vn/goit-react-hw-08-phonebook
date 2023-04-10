@@ -23,7 +23,7 @@ export const ContactForm = () => {
             :
             dispatch(addContact({
                 name,
-                number 
+                number
             }
             ));
       
@@ -53,7 +53,8 @@ export const ContactForm = () => {
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     required
                 />
-                <SubmitButton>Add contact</SubmitButton>
+                <div className={css.btn}><SubmitButton>Add contact</SubmitButton>
+                </div>
             </form>
         </div>
     )
