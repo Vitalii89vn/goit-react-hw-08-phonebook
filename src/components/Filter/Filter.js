@@ -1,4 +1,3 @@
-// import css from "./Filter.module.css"
 import { useDispatch } from "react-redux";
 import { updateFilter } from 'redux/filter/filterSlice'
 import { DebounceInput } from 'react-debounce-input';
